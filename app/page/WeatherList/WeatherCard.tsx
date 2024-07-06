@@ -1,9 +1,17 @@
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {useState} from 'react';
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import WeatherModal from './WeatherModal';
 
 const sunImage = require('../../assets/sun.png');
 const rainImage = require('../../assets/rain.png');
 interface WeatherCardType {
-  temperature?: number;
+  temperature: number;
   rainfallMaxValue?: number;
   rainfallMinValue?: number;
   place: string;
@@ -11,27 +19,41 @@ interface WeatherCardType {
 }
 
 const WeatherCard = (props: WeatherCardType) => {
+  const [isVisible, setIsVisible] = useState(false);
   return (
-    <ImageBackground
-      imageStyle={style.image}
-      source={props.rainfallMaxValue ? rainImage : sunImage}>
-      <View style={style.card}>
-        <View style={{gap: 5}}>
-          <Text style={style.cardText}>
-            {props.isCurrent ? '我的位置' : props.place}
-          </Text>
-          {props.isCurrent && (
-            <Text style={[style.cardText, {fontSize: 14}]}>{props.place}</Text>
-          )}
-        </View>
-        <View style={style.cardTemperatureRow}>
-          <Text style={[style.cardText, style.cardTemperature]}>
-            {props.temperature}
-          </Text>
-          <Text style={style.cardText}>{`°C`}</Text>
-        </View>
-      </View>
-    </ImageBackground>
+    <>
+      <WeatherModal
+        place={props.place}
+        temperature={props.temperature}
+        rainfallMaxValue={props.rainfallMaxValue}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
+      <TouchableOpacity onPress={() => setIsVisible(true)}>
+        <ImageBackground
+          imageStyle={style.image}
+          source={props.rainfallMaxValue ? rainImage : sunImage}>
+          <View style={style.card}>
+            <View style={{gap: 5}}>
+              <Text style={style.cardText}>
+                {props.isCurrent ? '我的位置' : props.place}
+              </Text>
+              {props.isCurrent && (
+                <Text style={[style.cardText, {fontSize: 14}]}>
+                  {props.place}
+                </Text>
+              )}
+            </View>
+            <View style={style.cardTemperatureRow}>
+              <Text style={[style.cardText, style.cardTemperature]}>
+                {props.temperature}
+              </Text>
+              <Text style={style.cardText}>{`°C`}</Text>
+            </View>
+          </View>
+        </ImageBackground>
+      </TouchableOpacity>
+    </>
   );
 };
 

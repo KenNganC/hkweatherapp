@@ -13,9 +13,11 @@ const WeatherHeader = (props: WeatherHeaderType) => {
       <Text style={style.headerText}>香港各區氣溫</Text>
       <View>
         <TextInput
+          placeholder="搜索地區"
           value={props.searchText}
           onChangeText={props.setSearchText}
-          style={style.headerSearchBar}></TextInput>
+          style={style.headerSearchBar}
+        />
         <View style={style.headerSearchImage}>
           <Image source={searchImage} />
         </View>
@@ -27,10 +29,13 @@ const WeatherHeader = (props: WeatherHeaderType) => {
 const style = StyleSheet.create({
   header: {
     gap: 8,
-    paddingBottom: 4,
+    paddingBottom: 20,
+    backgroundColor: '#D8E9EE',
+    paddingTop: 17,
   },
   headerText: {
     fontSize: 18,
+    color: '#000',
     fontWeight: '700',
   },
   headerSearchBar: {

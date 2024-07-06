@@ -14,6 +14,8 @@ const WeatherList = () => {
   return (
     <SafeAreaView edges={['top']}>
       <FlatList
+        stickyHeaderIndices={[0]} // <--------
+        stickyHeaderHiddenOnScroll={true}
         style={style.list}
         contentContainerStyle={style.containerStyle}
         ListHeaderComponent={
@@ -51,7 +53,7 @@ const style = StyleSheet.create({
   containerStyle: {
     gap: 16,
     paddingHorizontal: 24,
-    paddingVertical: 17,
+    paddingBottom: 17,
   },
 });
 export default WeatherList;
