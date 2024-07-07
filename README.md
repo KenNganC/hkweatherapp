@@ -1,7 +1,7 @@
 # HK Weather App
 
 A Weather App that displays the current weather for the user's location built with react native.
-<img src="demo.gif" style="width:100%;max-width:300px;">
+<img src="demo.gif">
 
 # Consideration / Limitation
 
