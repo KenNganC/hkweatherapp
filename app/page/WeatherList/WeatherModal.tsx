@@ -49,7 +49,7 @@ const WeatherModal = (props: WeatherModalType) => {
           <View style={style.detailRow}>
             <Text style={style.detailText}>最高雨量紀錄</Text>
             <Text style={style.detailText}>
-              {props.rainfallMaxValue ? props.rainfallMaxValue : '-'}
+              {props.rainfallMaxValue ? `${props.rainfallMaxValue} mm` : '-'}
             </Text>
           </View>
         </View>
